@@ -45,3 +45,20 @@ Chompy can be configured via the `config.json` file. Below is a description of t
 ## Development
 
 The `XcodeProject` directory contains an Xcode project that you can open to work on this package within Xcode itself. However, when running the script, use the command line (`swift build` + `.build/debug/Chompy`, so that the script can cleanly pick up the `config.json` file). This extra step will likely be removed, once the SPM and Xcode integration is complete.
+
+## Output
+
+The processed logs will be outputted as a tab separated file with 3 columns after the first line (which holds the total build time). All time units are in seconds.
+
+`[Build Time]\t[Path and Line]\t[Detailed Description]`
+
+Sample output file:
+
+```
+Total build time: 1214.91016298532
+
+17.0409	/Users/jasdev/orangina/Classes/PerformanceLoggingEvent.swift:278:37	final get {}
+7.9331	/Users/jasdev/orangina/Components/ComposeUI/Classes/Election/LeaderboardTableView.swift:71:17	@objc final class func totalHeight(candidates: UInt, allowsLeaderboard: Bool) -> CGFloat
+6.2961	/Users/jasdev/orangina/Classes/UniversalLink.swift:127:25	private final class func dictionaryOfAppArgumentsFromQueryString(string: String) -> [NSObject : AnyObject]?
+4.2116	/Users/jasdev/orangina/Classes/ActivityViewController.swift:56:22	final get {}
+```

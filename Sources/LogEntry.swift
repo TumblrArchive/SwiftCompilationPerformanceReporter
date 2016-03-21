@@ -66,7 +66,7 @@ extension LogEntry {
 
 extension LogEntry: CustomStringConvertible {
     var description: String {
-        return ["\(compilationTime/1000)s", location, detailedDescription].componentsJoinedByString("\t")
+        return ["\(compilationTime/1000)", location, detailedDescription].componentsJoinedByString("\t")
     }
 }
 
