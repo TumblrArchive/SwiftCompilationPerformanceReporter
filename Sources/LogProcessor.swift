@@ -34,7 +34,7 @@ struct LogProcessor {
             
             let entries = fullText.componentsSeparatedByString("\n").flatMap { LogEntry(line: $0) }
             let mergedEntries = mergeDuplicateEntries(entries)
-            let outputText = (["Total build time: \(totalBuildTime)\n"] + mergedEntries.prefix(Int(limit)).map { String($0) }).joinWithSeparator("\n")
+            let outputText = (["Total build time: \(totalBuildTime)"] + mergedEntries.prefix(Int(limit)).map { String($0) }).joinWithSeparator("\n")
             
             try outputText.writeToFile("\(outputPath.pathWithAppendedTimestamp.absoluteString).txt", atomically: true, encoding: NSUTF8StringEncoding)
         }

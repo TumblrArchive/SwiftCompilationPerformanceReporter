@@ -56,7 +56,6 @@ Sample output file:
 
 ```
 Total build time: 1214.91016298532
-
 17.0409	/Users/jasdev/orangina/Classes/PerformanceLoggingEvent.swift:278:37	final get {}
 7.9331	/Users/jasdev/orangina/Components/ComposeUI/Classes/Election/LeaderboardTableView.swift:71:17	@objc final class func totalHeight(candidates: UInt, allowsLeaderboard: Bool) -> CGFloat
 6.2961	/Users/jasdev/orangina/Classes/UniversalLink.swift:127:25	private final class func dictionaryOfAppArgumentsFromQueryString(string: String) -> [NSObject : AnyObject]?
