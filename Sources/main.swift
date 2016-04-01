@@ -12,7 +12,7 @@ guard let data = JSONData else {
 }
 
 guard
-    let JSONDict = (try? NSJSONSerialization.JSONObjectWithData(data, options: []) as? [String: AnyObject]) ?? nil,
+    let JSONDict = (try? NSJSONSerialization.jsonObject(with: data, options: []) as? [String: AnyObject]) ?? nil,
     let buildCommand = BuildCommand(dictionary: JSONDict)
 else {
     fatalError("Invalid config.json. See README to make sure it's valid.")
@@ -23,7 +23,7 @@ print(">>> Building \(buildCommand.scheme)...")
 
 let buildStartTime = NSDate()
 
-let task = NSTask.launchedTaskWithLaunchPath(Constants.launchPath, arguments: [Constants.commandFlag, buildCommandString])
+let task = NSTask.launchedTask(withLaunchPath: Constants.launchPath, arguments: [Constants.commandFlag, buildCommandString])
 task.waitUntilExit()
 
 guard task.terminationStatus == 0 else {
@@ -32,7 +32,7 @@ guard task.terminationStatus == 0 else {
 
 print(">>> \(buildCommand.scheme) built successfully!")
 
-let elapsedTime = NSDate().timeIntervalSinceDate(buildStartTime)
+let elapsedTime = NSDate().timeInterval(since: buildStartTime)
 
 let processor = LogProcessor(path: outputPath,  
                              outputPath: buildCommand.reportOutputDirectory,

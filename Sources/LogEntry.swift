@@ -33,13 +33,13 @@ extension LogEntry {
      - returns: An instance of `LogEntry` or `nil`, if invalid.
      */
     init?(line: String) {
-        let components = line.componentsSeparatedByString("\t").map { $0.stringByTrimmingCharactersInSet(.whitespaceCharacterSet()) }
+        let components = line.componentsSeparated(by: "\t").map { $0.trimmingCharacters(in: .whitespace()) }
         
         guard
             components.count == 3 &&
-            components[1].rangeOfString(Constants.invalidLocation) == nil,
+            components[1].range(of: Constants.invalidLocation) == nil,
             let compilationTime = Double(
-                components[0].stringByTrimmingCharactersInSet(.letterCharacterSet())
+                components[0].trimmingCharacters(in: .letter())
             )
         else {
             return nil
@@ -66,7 +66,8 @@ extension LogEntry {
 
 extension LogEntry: CustomStringConvertible {
     var description: String {
-        return ["\(compilationTime/1000)", location, detailedDescription].componentsJoinedByString("\t")
+        let formattedTime = "\(compilationTime/1000)"
+        return [formattedTime, location, detailedDescription].joined(separator: "\t")
     }
 }
 

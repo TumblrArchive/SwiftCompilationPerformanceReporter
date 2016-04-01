@@ -32,11 +32,12 @@ struct LogProcessor {
         do {
             let fullText = try String(contentsOfFile: path)
             
-            let entries = fullText.componentsSeparatedByString("\n").flatMap { LogEntry(line: $0) }
+            let entries = fullText.componentsSeparated(by: "\n").flatMap { LogEntry(line: $0) }
             let mergedEntries = mergeDuplicateEntries(entries)
-            let outputText = (["Total build time: \(totalBuildTime)"] + mergedEntries.prefix(Int(limit)).map { String($0) }).joinWithSeparator("\n")
+            let buildTimePrompt = "Total build time: \(totalBuildTime)"
+            let outputText = ([buildTimePrompt] + mergedEntries.prefix(Int(limit)).map { String($0) }).joined(separator: "\n")
             
-            try outputText.writeToFile("\(outputPath.pathWithAppendedTimestamp.absoluteString).txt", atomically: true, encoding: NSUTF8StringEncoding)
+            try outputText.write(toFile: "\(outputPath.pathWithAppendedTimestamp.absoluteString).txt", atomically: true, encoding: NSUTF8StringEncoding)
         }
         catch {
             fatalError("Log processing failed w/ error: \(error)")
@@ -50,7 +51,7 @@ struct LogProcessor {
             timeFrequencyMap[$0] = (timeFrequencyMap[$0] ?? 0) + $0.compilationTime
         }
         
-        return timeFrequencyMap.enumerate().sort { $0.element.1 > $1.element.1 }.map {
+        return timeFrequencyMap.enumerated().sorted { $0.element.1 > $1.element.1 }.map {
             $0.element.0.updateCompilationTime($0.element.1)
         }
     }
