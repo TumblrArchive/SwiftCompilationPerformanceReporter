@@ -1,0 +1,7 @@
+{
+    "workspacePath": "/Users/jenkins/workspace/Chompy/orangina/Orangina.xcworkspace",
+    "scheme": "Orangina",
+    "buildOutputDirectory": "/Users/jenkins/workspace/Chompy/logs/CompilationLogs/",
+    "reportOutputDirectory": "/Users/jenkins/workspace/Chompy/logs/ProcessedLogs/",
+    "limit": 10
+}
