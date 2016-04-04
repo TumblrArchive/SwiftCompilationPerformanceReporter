@@ -1,7 +1,6 @@
 import Foundation
 
 private struct Constants {
-    static let configFile = "config.json"
     static let launchPath = "/bin/bash"
     static let commandFlag = "-c"
 }
