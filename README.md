@@ -6,8 +6,8 @@ Chompy can be configured to build a specific target, output raw debug times to a
 
 ## Requirements
 
-- The latest [_development_ snapshot](https://swift.org/download/#latest-development-snapshots) of Swift 
-- [Xcode 7.3 Beta 5](https://developer.apple.com/xcode/download/) or above
+- The latest [_Trunk development_ snapshot](https://swift.org/download/) of Swift 
+- [Xcode 7.3](https://developer.apple.com/xcode/download/) or above configured with the latest toolchain (Preferences > Components > Toolchains)
 
 ## Configuration
 

@@ -1,11 +1,3 @@
-//
-//  LogEntry.swift
-//  Chompy
-//
-//  Created by Jasdev Singh on 3/17/16.
-//  Copyright © 2016 Jasdev Singh. All rights reserved.
-//
-
 /**
  *  Wrapper on a line of raw Swift debug time output
  */
