@@ -25,13 +25,13 @@ extension LogEntry {
      - returns: An instance of `LogEntry` or `nil`, if invalid.
      */
     init?(line: String) {
-        let components = line.componentsSeparated(by: "\t").map { $0.trimmingCharacters(in: .whitespace()) }
+        let components = line.components(separatedBy: "\t").map { $0.trimmingCharacters(in: .whitespaces()) }
         
         guard
             components.count == 3 &&
             components[1].range(of: Constants.invalidLocation) == nil,
             let compilationTime = Double(
-                components[0].trimmingCharacters(in: .letter())
+                components[0].trimmingCharacters(in: .letters())
             )
         else {
             return nil
@@ -49,7 +49,7 @@ extension LogEntry {
      
      - returns: A mirrored `LogEntry` with a new `compilationTime`
      */
-    func updateCompilationTime(time: Double) -> LogEntry {
+    func updateCompilation(time: Double) -> LogEntry {
         return LogEntry(compilationTime: time, location: location, detailedDescription: detailedDescription)
     }
 }

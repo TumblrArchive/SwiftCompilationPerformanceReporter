@@ -31,7 +31,7 @@ guard task.terminationStatus == 0 else {
 
 print(">>> \(buildCommand.scheme) built successfully!")
 
-let elapsedTime = NSDate().timeInterval(since: buildStartTime)
+let elapsedTime = NSDate().timeIntervalSince(buildStartTime)
 
 let processor = LogProcessor(path: outputPath,  
                              outputPath: buildCommand.reportOutputDirectory,

@@ -1,17 +1,16 @@
-# SwiftCPR
+# SwiftCompilationPerformanceReporter
 
 Inspired by [Brian](https://twitter.com/brianmichel/) and [Bryan](https://twitter.com/irace/)'s [prior](https://github.com/brianmichel/Swift-Analysis-Workflow) [work](http://irace.me/swift-profiling), we've decided to develop a Swift Package and script to generate automated reports for slow Swift compilation paths in specific targets!
 
-SwiftCPR (Swift Compilation Time Reporter) can be configured to build a specific target, output raw debug times to a specific location, and clean those logs to rank the slowest parts to compile.
+SwiftCompilationPerformanceReporter (nicknamed SwiftCPR) can be configured to build a specific target, output raw debug times to a specific location, and clean those logs to rank the slowest parts to compile.
 
 ## Requirements
 
 - The latest [_Trunk development_ snapshot](https://swift.org/download/) of Swift 
-- [Xcode 7.3](https://developer.apple.com/xcode/download/) or above configured with the latest toolchain (Preferences > Components > Toolchains)
 
 ## Configuration
 
-SwiftCPR can be configured via the `config.json` file. Below is a description of the options available and a sample configuration:
+SwiftCompilationPerformanceReporter can be configured via the `config.json` file. Below is a description of the options available and a sample configuration:
 
 ```javascript
 {
@@ -38,7 +37,7 @@ SwiftCPR can be configured via the `config.json` file. Below is a description of
 - Simply clone this repository on the machine that will be generating these reports.
 - Run `swift build` in the root directory
 - Make sure all directories used in `config.json` are set properly and exist.
-- To kick off the script, run `.build/debug/SwiftCPR` in the root directory!
+- To kick off the script, run `.build/debug/SwiftCompilationPerformanceReporter` in the root directory!
 - If there are any errors, the script will output them.
 - The processed logs will be outputted as timestamped files in `reportOutputDirectory`.
 

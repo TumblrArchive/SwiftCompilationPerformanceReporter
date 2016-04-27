@@ -24,8 +24,8 @@ struct LogProcessor {
         do {
             let fullText = try String(contentsOfFile: path)
             
-            let entries = fullText.componentsSeparated(by: "\n").flatMap { LogEntry(line: $0) }
-            let mergedEntries = mergeDuplicateEntries(entries)
+            let entries = fullText.components(separatedBy: "\n").flatMap { LogEntry(line: $0) }
+            let mergedEntries = mergeDuplicateEntries(entries: entries)
             let buildTimePrompt = "Total build time: \(totalBuildTime)"
             let outputText = ([buildTimePrompt] + mergedEntries.prefix(Int(limit)).map { String($0) }).joined(separator: "\n")
             
@@ -44,7 +44,7 @@ struct LogProcessor {
         }
         
         return timeFrequencyMap.enumerated().sorted { $0.element.1 > $1.element.1 }.map {
-            $0.element.0.updateCompilationTime($0.element.1)
+            $0.element.0.updateCompilation(time: $0.element.1)
         }
     }
 }
