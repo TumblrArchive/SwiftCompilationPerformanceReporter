@@ -71,10 +71,11 @@ extension BuildCommand {
     func buildInfo() -> (outputLogPath: String, buildCommandString: String)  {
         let outputLogPath = "\(buildOutputPath.pathWithAppendedTimestamp.absoluteString).txt"
         
+        // `NSString` casting needed to get around https://bugs.swift.org/browse/SR-957?jql=text%20~%20%22string%20cvararg%22
         return (outputLogPath: outputLogPath,
                 String(format: BuildCommand.buildCommand,
-                      workspacePath.absoluteString,
-                      scheme,
-                      outputLogPath))
+                      workspacePath.absoluteString as NSString,
+                      scheme as NSString,
+                      outputLogPath as NSString))
     }
 }
