@@ -5,7 +5,7 @@ private struct Constants {
     static let commandFlag = "-c"
 }
 
-let JSONData = NSData.init(contentsOfFile: "\(NSFileManager.defaultManager().currentDirectoryPath)/config.json")
+let JSONData = NSData.init(contentsOfFile: "\(NSFileManager.default().currentDirectoryPath)/config.json")
 guard let data = JSONData else {
     fatalError("Failed to read config.json!")
 }
