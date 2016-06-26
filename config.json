@@ -1,7 +1,7 @@
 {
-    "workspacePath": "/Users/jasdev/orangina/Orangina.xcworkspace",
+    "workspacePath": "/Users/js/Projects/orangina/Orangina.xcworkspace",
     "scheme": "Orangina",
-    "buildOutputDirectory": "/Users/jasdev/Desktop/CompilationLogs/",
-    "reportOutputDirectory": "/Users/jasdev/Desktop/ProcessedLogs/",
+    "buildOutputDirectory": "/Users/js/Desktop/CompilationLogs/",
+    "reportOutputDirectory": "/Users/js/Desktop/ProcessedLogs/",
     "limit": 10
 }

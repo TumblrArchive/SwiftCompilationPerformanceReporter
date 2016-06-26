@@ -1,3 +1,5 @@
+import Foundation
+
 /**
  *  Wrapper on a line of raw Swift debug time output
  */
@@ -25,13 +27,13 @@ extension LogEntry {
      - returns: An instance of `LogEntry` or `nil`, if invalid.
      */
     init?(line: String) {
-        let components = line.components(separatedBy: "\t").map { $0.trimmingCharacters(in: .whitespaces()) }
+        let components = line.components(separatedBy: "\t").map { $0.trimmingCharacters(in: NSCharacterSet.whitespaces()) }
         
         guard
             components.count == 3 &&
             components[1].range(of: Constants.invalidLocation) == nil,
             let compilationTime = Double(
-                components[0].trimmingCharacters(in: .letters())
+                components[0].trimmingCharacters(in: NSCharacterSet.letters())
             )
         else {
             return nil
@@ -49,7 +51,7 @@ extension LogEntry {
      
      - returns: A mirrored `LogEntry` with a new `compilationTime`
      */
-    func updateCompilation(time: Double) -> LogEntry {
+    func updateCompilation(_ time: Double) -> LogEntry {
         return LogEntry(compilationTime: time, location: location, detailedDescription: detailedDescription)
     }
 }

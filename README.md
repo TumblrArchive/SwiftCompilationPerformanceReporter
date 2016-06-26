@@ -6,7 +6,8 @@ SwiftCompilationPerformanceReporter (nicknamed SwiftCPR) can be configured to bu
 
 ## Requirements
 
-- The latest [_Trunk development_ snapshot](https://swift.org/download/) of Swift 
+- The latest [_Trunk development_ snapshot](https://swift.org/download/) of Swift
+- [Xcode 8 Beta](https://developer.apple.com/xcode/)
 
 ## Configuration
 
@@ -14,7 +15,10 @@ SwiftCompilationPerformanceReporter can be configured via the `config.json` file
 
 ```javascript
 {
+    // Note: either a project or workspace file can be specified, _but not both_
     "workspacePath": "/Users/jasdev/orangina/Orangina.xcworkspace",
+    "projectPath": "/Users/jasdev/orangina/Orangina.xcodeproj",
+
     "scheme": "Orangina",
     "buildOutputDirectory": "/Users/jasdev/Desktop/CompilationLogs/",
     "reportOutputDirectory": "/Users/jasdev/Desktop/ProcessedLogs/",
@@ -23,6 +27,8 @@ SwiftCompilationPerformanceReporter can be configured via the `config.json` file
 ```
 
 `workspacePath`: The absolute path to the workspace file to use.
+
+`projectPath`: The absolute path to the project file to use.
 
 `scheme`: The scheme to use
 
@@ -35,7 +41,9 @@ SwiftCompilationPerformanceReporter can be configured via the `config.json` file
 ## Installation
 
 - Simply clone this repository on the machine that will be generating these reports.
+- SwiftCPR is built against the latest Foundation APIs. Because of this, you'll need to run `sudo xcode-select -s /Applications/Xcode-beta.app/Contents/Developer` prior to building.
 - Run `swift build` in the root directory
+- Run `sudo xcode-select -s /Applications/Xcode.app/Contents/Developer` to switch back to the release version of Xcode CLI tools.
 - Make sure all directories used in `config.json` are set properly and exist.
 - To kick off the script, run `.build/debug/SwiftCompilationPerformanceReporter` in the root directory!
 - If there are any errors, the script will output them.
