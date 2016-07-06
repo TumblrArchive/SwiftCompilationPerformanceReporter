@@ -6,7 +6,8 @@ SwiftCompilationPerformanceReporter (nicknamed SwiftCPR) can be configured to bu
 
 ## Requirements
 
-- The latest [_Trunk development_ snapshot](https://swift.org/download/) of Swift 
+- [Xcode 8 Beta 2](https://developer.apple.com/download/)
+- [6/20/2016 Swift Trunk Development Snapshot](https://swift.org/builds/development/xcode/swift-DEVELOPMENT-SNAPSHOT-2016-06-20-a/swift-DEVELOPMENT-SNAPSHOT-2016-06-20-a-osx.pkg) (We'll periodically update this repo to work with the latest snapshots)
 
 ## Configuration
 
@@ -14,7 +15,10 @@ SwiftCompilationPerformanceReporter can be configured via the `config.json` file
 
 ```javascript
 {
+    // Note: either a project or workspace file can be specified, _but not both_
     "workspacePath": "/Users/jasdev/orangina/Orangina.xcworkspace",
+    "projectPath": "/Users/jasdev/orangina/Orangina.xcodeproj",
+
     "scheme": "Orangina",
     "buildOutputDirectory": "/Users/jasdev/Desktop/CompilationLogs/",
     "reportOutputDirectory": "/Users/jasdev/Desktop/ProcessedLogs/",
@@ -23,6 +27,8 @@ SwiftCompilationPerformanceReporter can be configured via the `config.json` file
 ```
 
 `workspacePath`: The absolute path to the workspace file to use.
+
+`projectPath`: The absolute path to the project file to use.
 
 `scheme`: The scheme to use
 

@@ -5,13 +5,13 @@ private struct Constants {
     static let commandFlag = "-c"
 }
 
-let JSONData = NSData.init(contentsOfFile: "\(NSFileManager.default().currentDirectoryPath)/config.json")
+let JSONData = try? Data.init(contentsOf: URL(fileURLWithPath: "\(FileManager.default().currentDirectoryPath)/config.json"))
 guard let data = JSONData else {
     fatalError("Failed to read config.json!")
 }
 
 guard
-    let JSONDict = (try? NSJSONSerialization.jsonObject(with: data, options: []) as? [String: AnyObject]) ?? nil,
+    let JSONDict = (try? JSONSerialization.jsonObject(with: data, options: []) as? [String: AnyObject]) ?? nil,
     let buildCommand = BuildCommand(dictionary: JSONDict)
 else {
     fatalError("Invalid config.json. See README to make sure it's valid.")
@@ -20,9 +20,9 @@ else {
 let (outputPath, buildCommandString) = buildCommand.buildInfo()
 print(">>> Building \(buildCommand.scheme)...")
 
-let buildStartTime = NSDate()
+let buildStartTime = Date()
 
-let task = NSTask.launchedTask(withLaunchPath: Constants.launchPath, arguments: [Constants.commandFlag, buildCommandString])
+let task = Task.launchedTask(withLaunchPath: Constants.launchPath, arguments: [Constants.commandFlag, buildCommandString])
 task.waitUntilExit()
 
 guard task.terminationStatus == 0 else {
@@ -31,7 +31,7 @@ guard task.terminationStatus == 0 else {
 
 print(">>> \(buildCommand.scheme) built successfully!")
 
-let elapsedTime = NSDate().timeIntervalSince(buildStartTime)
+let elapsedTime = Date().timeIntervalSince(buildStartTime)
 
 let processor = LogProcessor(path: outputPath,  
                              outputPath: buildCommand.reportOutputDirectory,
