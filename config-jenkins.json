@@ -1,7 +1,0 @@
-{
-    "workspacePath": "/Users/jenkins/workspace/SwiftCPR/orangina/Orangina.xcworkspace",
-    "scheme": "Orangina",
-    "buildOutputDirectory": "/Users/jenkins/workspace/SwiftCPR/logs/CompilationLogs/",
-    "reportOutputDirectory": "/Users/jenkins/workspace/SwiftCPR/logs/ProcessedLogs/",
-    "limit": 10
-}
