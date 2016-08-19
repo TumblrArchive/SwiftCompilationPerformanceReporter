@@ -4,7 +4,7 @@ import Foundation
  *  `BuildCommand` is a thin wrapper on the command needed to determine Swift compilation times for specific functions.
  */
 struct BuildCommand {
-    private var buildCommand: String {
+    fileprivate var buildCommand: String {
         let pathFlag: String
         switch pathConfiguration {
         case .workspace(_):
@@ -35,7 +35,7 @@ struct BuildCommand {
     /// The number of entries to output in the processed logs. Defaults to 20.
     let limit: UInt
     
-    private enum JSONKeys: String {
+    fileprivate enum JSONKeys: String {
         case workspacePath
         case projectPath
         case scheme
@@ -93,12 +93,12 @@ extension BuildCommand {
      - returns: A tuple containing the path to the raw output file to be generated and the command string
      */
     func buildInfo() -> (outputLogPath: String, buildCommandString: String)  {
-        let outputLogPath = "\(buildOutputPath.pathWithAppendedTimestamp.absoluteString ?? "").txt"
+        let outputLogPath = "\(buildOutputPath.pathWithAppendedTimestamp.absoluteString).txt"
         
         // `NSString` casting needed to get around https://bugs.swift.org/browse/SR-957?jql=text%20~%20%22string%20cvararg%22
         return (outputLogPath: outputLogPath,
                 String(format: buildCommand,
-                      (pathConfiguration.path.absoluteString ?? "") as NSString,
+                      (pathConfiguration.path.absoluteString) as NSString,
                       scheme as NSString,
                       outputLogPath as NSString))
     }

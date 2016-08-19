@@ -27,9 +27,9 @@ struct LogProcessor {
             let entries = fullText.components(separatedBy: "\n").flatMap { LogEntry(line: $0) }
             let mergedEntries = mergeDuplicateEntries(entries)
             let buildTimePrompt = "Total build time: \(totalBuildTime)"
-            let outputText = ([buildTimePrompt] + mergedEntries.prefix(upTo: Int(limit)).map { String($0) }).joined(separator: "\n")
+            let outputText = ([buildTimePrompt] + mergedEntries.prefix(upTo: Int(limit)).map { String(describing: $0) }).joined(separator: "\n")
             
-            try outputText.write(toFile: "\(outputPath.pathWithAppendedTimestamp.absoluteString ?? "").txt", atomically: true, encoding: String.Encoding.utf8)
+            try outputText.write(toFile: "\(outputPath.pathWithAppendedTimestamp.absoluteString).txt", atomically: true, encoding: String.Encoding.utf8)
         }
         catch {
             fatalError("Log processing failed w/ error: \(error)")

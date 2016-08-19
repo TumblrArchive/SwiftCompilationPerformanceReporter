@@ -4,7 +4,7 @@ import Foundation
  *  Wrapper on a line of raw Swift debug time output
  */
 struct LogEntry {
-    private struct Constants {
+    fileprivate struct Constants {
         static let invalidLocation = "<invalid loc>"
     }
     
@@ -27,13 +27,13 @@ extension LogEntry {
      - returns: An instance of `LogEntry` or `nil`, if invalid.
      */
     init?(line: String) {
-        let components = line.components(separatedBy: "\t").map { $0.trimmingCharacters(in: NSCharacterSet.whitespaces()) }
+        let components = line.components(separatedBy: "\t").map { $0.trimmingCharacters(in: NSCharacterSet.whitespaces) }
         
         guard
             components.count == 3 &&
             components[1].range(of: Constants.invalidLocation) == nil,
             let compilationTime = Double(
-                components[0].trimmingCharacters(in: NSCharacterSet.letters())
+                components[0].trimmingCharacters(in: NSCharacterSet.letters)
             )
         else {
             return nil

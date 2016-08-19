@@ -5,7 +5,7 @@ private struct Constants {
     static let commandFlag = "-c"
 }
 
-let JSONData = try? Data.init(contentsOf: URL(fileURLWithPath: "\(FileManager.default().currentDirectoryPath)/config.json"))
+let JSONData = try? Data.init(contentsOf: URL(fileURLWithPath: "\(FileManager.default.currentDirectoryPath)/config.json"))
 guard let data = JSONData else {
     fatalError("Failed to read config.json!")
 }
@@ -22,7 +22,7 @@ print(">>> Building \(buildCommand.scheme)...")
 
 let buildStartTime = Date()
 
-let task = Task.launchedTask(withLaunchPath: Constants.launchPath, arguments: [Constants.commandFlag, buildCommandString])
+let task = Process.launchedProcess(launchPath: Constants.launchPath, arguments: [Constants.commandFlag, buildCommandString])
 task.waitUntilExit()
 
 guard task.terminationStatus == 0 else {

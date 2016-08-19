@@ -6,8 +6,8 @@ SwiftCompilationPerformanceReporter (nicknamed SwiftCPR) can be configured to bu
 
 ## Requirements
 
-- [Xcode 8 Beta 2](https://developer.apple.com/download/)
-- [6/20/2016 Swift Trunk Development Snapshot](https://swift.org/builds/development/xcode/swift-DEVELOPMENT-SNAPSHOT-2016-06-20-a/swift-DEVELOPMENT-SNAPSHOT-2016-06-20-a-osx.pkg) (We'll periodically update this repo to work with the latest snapshots)
+- [Xcode 8 Beta](https://developer.apple.com/download/)
+- [8/18/2016 Swift Trunk Development Snapshot](https://swift.org/builds/development/xcode/swift-DEVELOPMENT-SNAPSHOT-2016-08-18-a/swift-DEVELOPMENT-SNAPSHOT-2016-08-18-a-osx.pkg) (We'll periodically update this repo to work with the latest snapshots)
 
 ## Configuration
 
@@ -43,6 +43,7 @@ SwiftCompilationPerformanceReporter can be configured via the `config.json` file
 - Simply clone this repository on the machine that will be generating these reports.
 - Run `swift build` in the root directory
 - Make sure all directories used in `config.json` are set properly and exist.
+- If your desired scheme is built with a pre-3.x version of Swift, you'll want to `xcode-select` back to a stable version (i.e. `sudo xcode-select -s /Applications/Xcode.app`)
 - To kick off the script, run `.build/debug/SwiftCompilationPerformanceReporter` in the root directory!
 - If there are any errors, the script will output them.
 - The processed logs will be outputted as timestamped files in `reportOutputDirectory`.
